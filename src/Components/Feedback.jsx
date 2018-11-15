@@ -20,7 +20,7 @@ class FeedBack extends React.Component {
     let templateParams = this.state;
     console.log(this.state);
     emailjs
-      .send("<YOUR SERVICE ID>", "<YOUR TEMPLATE ID>", templateParams)
+      .send("gmail", "tech", templateParams, "user_RxhvyGQEKc5Qg6UrvouN6")
       .then(
         function(response) {
           console.log("SUCCESS!", response.status, response.text);
