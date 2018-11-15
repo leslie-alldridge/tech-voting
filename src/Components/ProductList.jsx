@@ -86,9 +86,12 @@ class ProductList extends React.Component {
           />
           ));
       return (
+          <div>
+    <h1 class="ui dividing centered header">Popular Improvements</h1>
+    <button onClick = {() => this.props.view('home')}>Change test button</button>
           <div className="ui unstackable items">  
               {productComponents}
-          </div>
+          </div></div>
       );
   }
 }
