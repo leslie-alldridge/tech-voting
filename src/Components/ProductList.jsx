@@ -1,16 +1,50 @@
 import React from 'react';
 import Product from './Product'
-import Seed from '../seed'
+
 class ProductList extends React.Component {
   constructor(props) {
       super(props)
       this.state = {
-          products: [],
+          products: [
+            {
+              id: 1,
+              title: 'Yellow Pail',
+              description: 'On-demand sand castle construction expertise.',
+              url: '#',
+              submitterAvatarUrl: 'images/avatars/daniel.jpg',
+              productImageUrl: 'images/products/image-aqua.png',
+            },
+            {
+              id: 2,
+              title: 'Supermajority: The Fantasy Congress League',
+              description: 'Earn points when your favorite politicians pass legislation.',
+              url: '#',
+              submitterAvatarUrl: 'images/avatars/kristy.png',
+              productImageUrl: 'images/products/image-rose.png',
+            },
+            {
+              id: 3,
+              title: 'Tinfoild: Tailored tinfoil hats',
+              description: 'We already have your measurements and shipping address.',
+              url: '#',
+              submitterAvatarUrl: 'images/avatars/veronika.jpg',
+              productImageUrl: 'images/products/image-steel.png',
+            },
+            {
+              id: 4,
+              title: 'Haught or Naught',
+              description: 'High-minded or absent-minded? You decide.',
+              url: '#',
+              submitterAvatarUrl: 'images/avatars/molly.png',
+              productImageUrl: 'images/products/image-yellow.png',
+            },
+          ],
       }
   }
 
   componentDidMount() {
-      this.setState({ products: Seed.products});
+      this.setState({ products: this.state.products});
+      
   }
 
   handleProductUpVote = (productId) => {

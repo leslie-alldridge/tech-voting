@@ -33,3 +33,6 @@ class Product extends React.Component {
 }
 
 export default Product;
+
+
+
