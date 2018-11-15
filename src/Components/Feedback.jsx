@@ -1,4 +1,5 @@
 import React from "react";
+import * as emailjs from "emailjs-com";
 
 class FeedBack extends React.Component {
   constructor(props) {
@@ -16,8 +17,18 @@ class FeedBack extends React.Component {
 
   formUpdate() {
     console.log("saved");
-
+    let templateParams = this.state;
     console.log(this.state);
+    emailjs
+      .send("<YOUR SERVICE ID>", "<YOUR TEMPLATE ID>", templateParams)
+      .then(
+        function(response) {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        function(err) {
+          console.log("FAILED...", err);
+        }
+      );
   }
 
   handleChangeTools(e) {
