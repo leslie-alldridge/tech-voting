@@ -16,37 +16,34 @@ class FeedBack extends React.Component {
   }
 
   formUpdate() {
-    console.log("saved");
     let templateParams = this.state;
-    console.log(this.state);
     emailjs
       .send("gmail", "tech", templateParams, "user_RxhvyGQEKc5Qg6UrvouN6")
       .then(
         function(response) {
           console.log("SUCCESS!", response.status, response.text);
+          //set state to show email success
         },
         function(err) {
+          //set state to show email fail
           console.log("FAILED...", err);
         }
       );
   }
 
   handleChangeTools(e) {
-    console.log(e.target.name);
     this.setState({
       tools: e.target.name
     });
   }
 
   handleChangeFiveMill(e) {
-    console.log(e.target.value);
     this.setState({
       fiveMill: e.target.value
     });
   }
 
   finalThoughts(e) {
-    console.log(e.target.value);
     this.setState({
       finalThoughts: e.target.value
     });
