@@ -23,8 +23,10 @@ class App extends React.Component {
     return (
       <div>
         <ImproveHeader />
-        {this.state.view == "product" && <ProductList view={this.changeView} />}
-        {this.state.view == "Feedback" && <Feedback />}
+        {this.state.view === "product" && (
+          <ProductList view={this.changeView} />
+        )}
+        {this.state.view === "Feedback" && <Feedback />}
       </div>
     );
   }
