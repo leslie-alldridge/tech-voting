@@ -1,4 +1,8 @@
-Todo: 
+## What are we building? 
+
+A small upvoting and feedback app for the Tech Team at Xero
+
+## Todo: 
 
 Localstorage to limit voting to 3 per device
 
