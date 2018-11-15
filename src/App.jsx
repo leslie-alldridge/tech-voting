@@ -2,6 +2,7 @@ import React from 'react';
 import ProductList from './Components/ProductList';
 import Feedback from './Components/Feedback';
 import { ImproveHeader } from './Components/ImproveHeader';
+import AddForm from './Components/AddForm';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class App extends React.Component {
           <ProductList view={this.changeView} />
         )}
         {this.state.view === 'Feedback' && <Feedback view={this.changeView} />}
+        {this.state.view === 'Add' && <AddForm view={this.changeView} />}
       </div>
     );
   }
