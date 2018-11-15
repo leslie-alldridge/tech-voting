@@ -56,10 +56,10 @@ class FeedBack extends React.Component {
     return (
       <div className="item">
         <p>Do you have the rights tools to provide world class support?</p>
-        <button onClick={this.handleChangeTools} name="yes">
+        <button onClick={this.handleChangeTools} name="Yes">
           Yes
         </button>
-        <button onClick={this.handleChangeTools} name="no">
+        <button onClick={this.handleChangeTools} name="No">
           No
         </button>
 
