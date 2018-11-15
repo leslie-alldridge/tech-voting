@@ -1,13 +1,13 @@
-import React from "react";
-import * as emailjs from "emailjs-com";
+import React from 'react';
+import * as emailjs from 'emailjs-com';
 
 class FeedBack extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tools: "no selection",
-      fiveMill: "no selection",
-      finalThoughts: "no additional feedback"
+      tools: 'no selection',
+      fiveMill: 'no selection',
+      finalThoughts: 'no additional feedback'
     };
     this.formUpdate = this.formUpdate.bind(this);
     this.handleChangeTools = this.handleChangeTools.bind(this);
@@ -18,15 +18,15 @@ class FeedBack extends React.Component {
   formUpdate() {
     let templateParams = this.state;
     emailjs
-      .send("gmail", "tech", templateParams, "user_RxhvyGQEKc5Qg6UrvouN6")
+      .send('gmail', 'tech', templateParams, 'user_RxhvyGQEKc5Qg6UrvouN6')
       .then(
         function(response) {
-          console.log("SUCCESS!", response.status, response.text);
+          console.log('SUCCESS!', response.status, response.text);
           //set state to show email success
         },
         function(err) {
           //set state to show email fail
-          console.log("FAILED...", err);
+          console.log('FAILED...', err);
         }
       );
   }
@@ -78,6 +78,13 @@ class FeedBack extends React.Component {
           onClick={this.formUpdate}
         >
           Submit
+        </div>
+        <div
+          class="ui submit button"
+          name="knowledge"
+          onClick={() => this.props.view('Product')}
+        >
+          Back
         </div>
       </div>
     );

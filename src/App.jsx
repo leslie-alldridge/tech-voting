@@ -1,13 +1,13 @@
-import React from "react";
-import ProductList from "./Components/ProductList";
-import Feedback from "./Components/Feedback";
-import { ImproveHeader } from "./Components/ImproveHeader";
+import React from 'react';
+import ProductList from './Components/ProductList';
+import Feedback from './Components/Feedback';
+import { ImproveHeader } from './Components/ImproveHeader';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: "product"
+      view: 'Product'
     };
     this.changeView = this.changeView.bind(this);
   }
@@ -23,10 +23,10 @@ class App extends React.Component {
     return (
       <div>
         <ImproveHeader />
-        {this.state.view === "product" && (
+        {this.state.view === 'Product' && (
           <ProductList view={this.changeView} />
         )}
-        {this.state.view === "Feedback" && <Feedback />}
+        {this.state.view === 'Feedback' && <Feedback view={this.changeView} />}
       </div>
     );
   }
