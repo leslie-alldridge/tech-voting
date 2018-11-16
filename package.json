@@ -9,8 +9,7 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
-    "react-spinners": "^0.4.7",
-    "semantic-ui": "2.2.10"
+    "react-spinners": "^0.4.7"
   },
   "scripts": {
     "start": "NODE_ENV=production node server.js",
