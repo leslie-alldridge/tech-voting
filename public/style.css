@@ -33,3 +33,7 @@ i.icon {
 #addPara {
   margin-top: 5%;
 }
+
+#icon:hover {
+  color: rgb(34, 243, 34);
+}
