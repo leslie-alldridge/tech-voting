@@ -1,8 +1,6 @@
-import React from 'react';
-import { css } from 'react-emotion';
-// First way to import
-import { BeatLoader } from 'react-spinners';
-// Another way to import
+import React from "react";
+import { css } from "react-emotion";
+import { BeatLoader } from "react-spinners";
 
 const override = css`
   display: block;
@@ -22,9 +20,9 @@ class Loader extends React.Component {
       <div className="sweet-loading">
         <BeatLoader
           className={override}
-          sizeUnit={'px'}
+          sizeUnit={"px"}
           size={10}
-          color={'#123abc'}
+          color={"#123abc"}
           loading={this.state.loading}
         />
       </div>

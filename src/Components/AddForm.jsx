@@ -1,15 +1,15 @@
-import React from 'react';
-import * as emailjs from 'emailjs-com';
-import Loader from './Loader';
-import { Error } from './Error';
+import React from "react";
+import * as emailjs from "emailjs-com";
+import Loader from "./Loader";
+import { Error } from "./Error";
 
 class AddForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'No title added',
-      subtitle: 'No subtitle',
-      user: 'anonymous',
+      title: "No title added",
+      subtitle: "No subtitle",
+      user: "anonymous",
       loading: false,
       error: false,
       added: false
@@ -26,7 +26,7 @@ class AddForm extends React.Component {
       loading: true
     });
     emailjs
-      .send('gmail', 'add', templateParams, 'user_RxhvyGQEKc5Qg6UrvouN6')
+      .send("gmail", "add", templateParams, "user_RxhvyGQEKc5Qg6UrvouN6")
       .then(
         response => {
           this.setState({
@@ -34,7 +34,7 @@ class AddForm extends React.Component {
             error: false,
             added: true
           });
-          console.log('SUCCESS!', response.status, response.text);
+          console.log("SUCCESS!", response.status, response.text);
           //set state to show email success
         },
         err => {
@@ -43,7 +43,7 @@ class AddForm extends React.Component {
             error: true
           });
           //set state to show email fail
-          console.log('FAILED...', err);
+          console.log("FAILED...", err);
         }
       );
   }
@@ -96,7 +96,7 @@ class AddForm extends React.Component {
           <div
             class="ui submit button"
             name="knowledge"
-            onClick={() => this.props.view('Product')}
+            onClick={() => this.props.view("Product")}
           >
             Back
           </div>
