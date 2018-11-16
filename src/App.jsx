@@ -2,6 +2,8 @@ import React from "react";
 import ProductList from "./Components/ProductList";
 import Feedback from "./Components/Feedback";
 import { ImproveHeader } from "./Components/ImproveHeader";
+import { FeedbackHeader } from "./Components/FeedbackHeader";
+import { AddHeader } from "./Components/AddHeader";
 import AddForm from "./Components/AddForm";
 
 class App extends React.Component {
@@ -22,7 +24,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <ImproveHeader />
+        {this.state.view === "Product" && <ImproveHeader />}
+        {this.state.view === "Feedback" && <FeedbackHeader />}
+        {this.state.view === "Add" && <AddHeader />}
         {this.state.view === "Product" && (
           <ProductList view={this.changeView} />
         )}

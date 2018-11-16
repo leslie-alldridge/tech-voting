@@ -69,19 +69,23 @@ class AddForm extends React.Component {
   render() {
     return (
       <div>
-        <div className="item">
+        <div id="feedForm" className="item">
           <p>Please enter a title for your Improvement</p>
-          <input onChange={this.handleChangeTitle} type="text" />
-          <p>
+          <input id="textArea" onChange={this.handleChangeTitle} type="text" />
+          <p id="addPara">
             Please enter a subtitle to help others understand this Improvement
           </p>
           <div className="field">
-            <textarea onChange={this.handleChangeSubtitle} rows="2" />
+            <textarea
+              id="textArea"
+              onChange={this.handleChangeSubtitle}
+              rows="2"
+            />
           </div>
 
           <p>Known or anonymous?</p>
           <div className="field">
-            <textarea onChange={this.finalThoughts} rows="3" />
+            <textarea id="textArea" onChange={this.finalThoughts} rows="3" />
           </div>
           {!this.state.loading && !this.state.added && (
             <div
