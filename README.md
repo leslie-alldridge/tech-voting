@@ -8,11 +8,11 @@ Localstorage to limit voting to 3 per device
 
 Add anonymous barry image
 
-Allow users to click on profile picture on the add improvement form
+Allow users to select a profile picture on the add improvement form
 
 Store the selections in a database
 
-Deploy with docker
+Deploy with docker DONE
 
 Add more semantic ui styling to buttons etc
 
