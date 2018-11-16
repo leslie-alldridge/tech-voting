@@ -84,17 +84,17 @@ class ProductList extends React.Component {
     ));
     return (
       <div>
-        <div id="buttons" class="ui two column centered grid">
-          <div class="ui large buttons">
+        <div id="buttons" className="ui two column centered grid">
+          <div className="ui large buttons">
             <button
-              class="ui blue button"
+              className="ui blue button"
               onClick={() => this.props.view("Feedback")}
             >
               Send Feedback
             </button>
-            <div class="or" />
+            <div className="or" />
             <button
-              class="ui blue button"
+              className="ui blue button"
               onClick={() => this.props.view("Add")}
             >
               Add Improvement

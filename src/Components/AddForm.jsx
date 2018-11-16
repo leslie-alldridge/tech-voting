@@ -75,17 +75,17 @@ class AddForm extends React.Component {
           <p>
             Please enter a subtitle to help others understand this Improvement
           </p>
-          <div class="field">
+          <div className="field">
             <textarea onChange={this.handleChangeSubtitle} rows="2" />
           </div>
 
           <p>Known or anonymous?</p>
-          <div class="field">
+          <div className="field">
             <textarea onChange={this.finalThoughts} rows="3" />
           </div>
           {!this.state.loading && !this.state.added && (
             <div
-              class="ui submit button"
+              className="ui submit button"
               name="knowledge"
               onClick={this.formUpdate}
             >
@@ -94,7 +94,7 @@ class AddForm extends React.Component {
           )}
           {this.state.loading && <Loader />}
           <div
-            class="ui submit button"
+            className="ui submit button"
             name="knowledge"
             onClick={() => this.props.view("Product")}
           >

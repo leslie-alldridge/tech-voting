@@ -77,7 +77,7 @@ class FeedBack extends React.Component {
           <p>Do you have the rights tools to provide world class support?</p>
           {this.state.tools !== "Yes" && (
             <button
-              class=" ui toggle button"
+              className=" ui toggle button"
               onClick={this.handleChangeTools}
               name="Yes"
             >
@@ -86,7 +86,7 @@ class FeedBack extends React.Component {
           )}
           {this.state.tools === "Yes" && (
             <button
-              class="positive ui toggle button"
+              className="positive ui toggle button"
               onClick={this.handleChangeTools}
               name="Yes"
             >
@@ -95,7 +95,7 @@ class FeedBack extends React.Component {
           )}
           {this.state.tools !== "No" && (
             <button
-              class="ui toggle button"
+              className="ui toggle button"
               onClick={this.handleChangeTools}
               name="No"
             >
@@ -104,7 +104,7 @@ class FeedBack extends React.Component {
           )}
           {this.state.tools === "No" && (
             <button
-              class="negative ui toggle button"
+              className="negative ui toggle button"
               onClick={this.handleChangeTools}
               name="No"
             >
@@ -116,7 +116,7 @@ class FeedBack extends React.Component {
           What things do you think we'll need, in order to service five million
           users?
         </p>
-        <div class="field">
+        <div className="field">
           <textarea
             id="textArea"
             onChange={this.handleChangeFiveMill}
@@ -125,39 +125,34 @@ class FeedBack extends React.Component {
         </div>
 
         <p id="question">Any Other Thoughts or Feedback?</p>
-        <div class="field">
+        <div className="field">
           <textarea id="textArea" onChange={this.finalThoughts} rows="3" />
         </div>
         {!this.state.loading && (
-          <div
-            class="positive ui submit button"
-            name="knowledge"
-            onClick={this.formUpdate}
-          >
+          <div className="positive ui submit button" onClick={this.formUpdate}>
             Submit
           </div>
         )}
         {this.state.loading && (
-          <div class="ui positive loading button">Loading</div>
+          <div className="ui positive loading button">Loading</div>
         )}
         <div
-          class="ui submit button"
-          name="knowledge"
+          className="ui submit button"
           onClick={() => this.props.view("Product")}
         >
           Back
         </div>
         {this.state.saved && this.state.toggleMsg && (
-          <div class="ui success message">
-            <i onClick={this.toggleMsg} class="close icon" />
-            <div class="header">Your feedback sent successfully.</div>
+          <div className="ui success message">
+            <i onClick={this.toggleMsg} className="close icon" />
+            <div className="header">Your feedback sent successfully.</div>
             <p>Thanks for doing this, you're a star!</p>
           </div>
         )}
         {this.state.err && this.state.toggleMsg && (
-          <div class="ui negative message">
-            <i onClick={this.toggleMsg} class="close icon" />
-            <div class="header">There was an error.</div>
+          <div className="ui negative message">
+            <i onClick={this.toggleMsg} className="close icon" />
+            <div className="header">There was an error.</div>
             <p>Please try again. If it persists, let a Team Leader know.</p>
           </div>
         )}

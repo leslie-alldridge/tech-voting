@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export const Error = () => {
-  return <h4 class="ui dividing centered header">Sorry there was an error.</h4>;
+  return (
+    <h4 className="ui dividing centered header">Sorry there was an error.</h4>
+  );
 };
 
 export default Error;
