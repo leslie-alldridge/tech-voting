@@ -7,29 +7,49 @@ class FeedBack extends React.Component {
     this.state = {
       tools: "no selection",
       fiveMill: "no selection",
-      finalThoughts: "no additional feedback"
+      finalThoughts: "no additional feedback",
+      loading: false,
+      saved: false,
+      toggleMsg: true,
+      err: false
     };
     this.formUpdate = this.formUpdate.bind(this);
     this.handleChangeTools = this.handleChangeTools.bind(this);
     this.handleChangeFiveMill = this.handleChangeFiveMill.bind(this);
     this.finalThoughts = this.finalThoughts.bind(this);
+    this.toggleMsg = this.toggleMsg.bind(this);
   }
 
   formUpdate() {
     let templateParams = this.state;
-
+    this.setState({
+      loading: true
+    });
     emailjs
       .send("gmail", "tech", templateParams, "user_RxhvyGQEKc5Qg6UrvouN6")
       .then(
-        function(response) {
-          console.log("SUCCESS!", response.status, response.text);
-          //set state to show email success
+        response => {
+          this.setState({
+            loading: false,
+            saved: true,
+            toggleMsg: true,
+            err: false
+          });
         },
-        function(err) {
-          //set state to show email fail
-          console.log("FAILED...", err);
+        err => {
+          this.setState({
+            loading: false,
+            err: true,
+            toggleMsg: true
+          });
         }
       );
+  }
+
+  toggleMsg() {
+    this.setState({
+      toggleMsg: !this.state.toggleMsg
+    });
   }
 
   handleChangeTools(e) {
@@ -52,7 +72,7 @@ class FeedBack extends React.Component {
 
   render() {
     return (
-      <div className="item">
+      <div id="feedForm" className="item">
         <div>
           <p>Do you have the rights tools to provide world class support?</p>
           {this.state.tools !== "Yes" && (
@@ -92,25 +112,34 @@ class FeedBack extends React.Component {
             </button>
           )}
         </div>
-        <p>
+        <p id="question">
           What things do you think we'll need, in order to service five million
           users?
         </p>
         <div class="field">
-          <textarea onChange={this.handleChangeFiveMill} rows="2" />
+          <textarea
+            id="textArea"
+            onChange={this.handleChangeFiveMill}
+            rows="3"
+          />
         </div>
 
-        <p>Any Other Thoughts or Feedback?</p>
+        <p id="question">Any Other Thoughts or Feedback?</p>
         <div class="field">
-          <textarea onChange={this.finalThoughts} rows="3" />
+          <textarea id="textArea" onChange={this.finalThoughts} rows="3" />
         </div>
-        <div
-          class="ui submit button"
-          name="knowledge"
-          onClick={this.formUpdate}
-        >
-          Submit
-        </div>
+        {!this.state.loading && (
+          <div
+            class="positive ui submit button"
+            name="knowledge"
+            onClick={this.formUpdate}
+          >
+            Submit
+          </div>
+        )}
+        {this.state.loading && (
+          <div class="ui positive loading button">Loading</div>
+        )}
         <div
           class="ui submit button"
           name="knowledge"
@@ -118,6 +147,20 @@ class FeedBack extends React.Component {
         >
           Back
         </div>
+        {this.state.saved && this.state.toggleMsg && (
+          <div class="ui success message">
+            <i onClick={this.toggleMsg} class="close icon" />
+            <div class="header">Your feedback sent successfully.</div>
+            <p>Thanks for doing this, you're a star!</p>
+          </div>
+        )}
+        {this.state.err && this.state.toggleMsg && (
+          <div class="ui negative message">
+            <i onClick={this.toggleMsg} class="close icon" />
+            <div class="header">There was an error.</div>
+            <p>Please try again. If it persists, let a Team Leader know.</p>
+          </div>
+        )}
       </div>
     );
   }
