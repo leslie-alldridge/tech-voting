@@ -1,17 +1,22 @@
-# base image
-FROM node:9.6.1
+FROM node:8
 
-# # set working directory
-# RUN mkdir /usr/src/app
-# WORKDIR /usr/src/app
+ENV USER=app
 
-# # add `/usr/src/app/node_modules/.bin` to $PATH
-# ENV PATH /usr/src/app/node_modules/.bin:$PATH
+ENV SUBDIR=appDir
 
-# # install and cache app dependencies
-# COPY package.json /usr/src/app/package.json
-# RUN npm install --silent
-# RUN npm install react-scripts@1.1.1 -g --silent
+RUN useradd --user-group --create-home --shell /bin/false $USER 
 
-# # start app
-# CMD ["npm", "start"]
+
+ENV HOME=/home/$USER
+
+COPY . . $HOME/$SUBDIR/
+
+RUN chown -R $USER:$USER $HOME/*
+
+USER $USER
+
+WORKDIR $HOME/$SUBDIR
+
+RUN npm install
+
+CMD ["npm", "start"]

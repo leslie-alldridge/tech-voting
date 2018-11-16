@@ -1,13 +1,13 @@
-# version: '3.5'
+version: "3.1"
 
-# services:
-#   sample-app:
-#     container_name: tech-voting
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#     volumes:
-#       - '.:/usr/src/app'
-#       - '/usr/src/app/node_modules'
-#     ports:
-#       - '3000:3000'
+services:
+  app:
+    build: .
+    command: npm run start
+    environment:
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/app/appDir
+      - /home/app/appDir/node_modules
