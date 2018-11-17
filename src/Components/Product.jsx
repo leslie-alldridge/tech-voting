@@ -2,11 +2,23 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import { get, set } from "../utils/localstorage";
+const uuidv1 = require("uuid/v1");
 
 class Product extends Component {
   handleUpVote = () => {
+    let uu = uuidv1();
+    console.log(uu);
+    let idea = {
+      id: 3,
+      title: "New wording for Status Page",
+      description: "Provide a #human experience for our users.",
+      url: "#",
+      votes: 0,
+      submitterAvatarUrl: "images/avatars/Vinh.png",
+      productImageUrl: "images/products/image-steel.png"
+    };
     this.props.fetchItems();
-    this.props.addToDo("added");
+    this.props.addToDo(idea, uu);
     let votesUsed = get("voted");
     if (votesUsed >= 3) {
       alert("No votes remaining");
