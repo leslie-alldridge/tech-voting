@@ -1,8 +1,15 @@
 import React from "react";
+import { get, set } from "../utils/localstorage";
 
 class Product extends React.Component {
   handleUpVote = () => {
-    this.props.onVote(this.props.id);
+    let votesUsed = get("voted");
+    if (votesUsed >= 3) {
+      alert("No votes remaining");
+    } else {
+      set("voted", Number(votesUsed) + 1);
+      this.props.onVote(this.props.id);
+    }
   };
 
   render() {
