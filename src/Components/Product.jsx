@@ -9,16 +9,16 @@ class Product extends Component {
     let uu = uuidv1();
     console.log(uu);
     let idea = {
-      id: 3,
-      title: "New wording for Status Page",
-      description: "Provide a #human experience for our users.",
+      id: 4,
+      title: "SQL querying tool",
+      description: "Avoid waiting for JIRAs.",
       url: "#",
       votes: 0,
-      submitterAvatarUrl: "images/avatars/Vinh.png",
-      productImageUrl: "images/products/image-steel.png"
+      submitterAvatarUrl: "images/avatars/Steve.png",
+      productImageUrl: "images/products/image-yellow.png"
     };
     this.props.fetchItems();
-    this.props.addToDo(idea, uu);
+    //this.props.addToDo(idea, uu);
     let votesUsed = get("voted");
     if (votesUsed >= 3) {
       alert("No votes remaining");

@@ -2,16 +2,14 @@ import { featuresRef, authRef, provider } from "./config/firebase";
 import { FETCH_FEATURES } from "./types";
 
 export const fetchItems = () => async dispatch => {
-  featuresRef
-    .child("b9f31170-ea2e-11e8-bd6f-7716cf846287")
-    .on("value", snapshot => {
-      console.log(snapshot);
+  featuresRef.on("value", snapshot => {
+    console.log(snapshot.val());
 
-      dispatch({
-        type: FETCH_FEATURES,
-        payload: "hi"
-      });
+    dispatch({
+      type: FETCH_FEATURES,
+      payload: snapshot.val()
     });
+  });
 };
 
 export const addToDo = (newIdea, uid) => async dispatch => {
