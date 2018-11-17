@@ -6,6 +6,7 @@ import { get, set } from "../utils/localstorage";
 class Product extends Component {
   handleUpVote = () => {
     this.props.fetchItems();
+    this.props.addToDo("added");
     let votesUsed = get("voted");
     if (votesUsed >= 3) {
       alert("No votes remaining");

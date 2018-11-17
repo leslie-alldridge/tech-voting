@@ -11,3 +11,8 @@ export const fetchItems = () => async dispatch => {
     });
   });
 };
+
+export const addToDo = newIdea => async dispatch => {
+  console.log(newIdea);
+  featuresRef.set(newIdea);
+};
