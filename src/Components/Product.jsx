@@ -1,8 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 import { get, set } from "../utils/localstorage";
 
-class Product extends React.Component {
+class Product extends Component {
   handleUpVote = () => {
+    this.props.fetchItems();
     let votesUsed = get("voted");
     if (votesUsed >= 3) {
       alert("No votes remaining");
@@ -43,4 +46,13 @@ class Product extends React.Component {
   }
 }
 
-export default Product;
+const mapStateToProps = ({ data }) => {
+  return {
+    data
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  actions
+)(Product);
