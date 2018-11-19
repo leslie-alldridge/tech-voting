@@ -5,18 +5,28 @@ import { get, set } from "../utils/localstorage";
 const uuidv1 = require("uuid/v1");
 
 class Product extends Component {
+  state={
+    comments: false
+  }
+
+  handleComments = () => {
+    this.setState({
+      comments: !this.state.comments
+    })
+  }
+
   handleUpVote = () => {
     let uu = uuidv1();
     console.log(uu);
-    let idea = {
-      id: 4,
-      title: "SQL querying tool",
-      description: "Avoid waiting for JIRAs.",
-      url: "#",
-      votes: 0,
-      submitterAvatarUrl: "images/avatars/Steve.png",
-      productImageUrl: "images/products/image-yellow.png"
-    };
+    // let idea = {
+    //   id: 4,
+    //   title: "SQL querying tool",
+    //   description: "Avoid waiting for JIRAs.",
+    //   url: "#",
+    //   votes: 0,
+    //   submitterAvatarUrl: "images/avatars/Steve.png",
+    //   productImageUrl: "images/products/image-yellow.png"
+    // };
     this.props.fetchItems();
     //this.props.addToDo(idea, uu);
     let votesUsed = get("voted");
@@ -42,7 +52,7 @@ class Product extends Component {
             {this.props.votes}
           </div>
           <div className="description">
-            <a href="#">{this.props.title}</a>
+          <h4 id="productTitle">{this.props.title}</h4> 
             <p>{this.props.description}</p>
           </div>
           <div className="extra">
@@ -52,6 +62,31 @@ class Product extends Component {
               alt=""
               className="ui avatar image"
             />
+            <p onClick={this.handleComments} id="comments"><i>Toggle comments</i></p>
+         
+           {this.state.comments && <div class="ui comments">
+  <h3 class="ui dividing header">Comments</h3>
+  <div class="comment">
+    <a class="avatar">
+      <img src={this.props.submitterAvatarUrl}/>
+    </a>
+    <div class="content">
+      <h4 id="productTitle">Nicole</h4>
+      <div class="text">
+        This would be lovely!
+      </div>
+    </div>
+  </div>
+  <form class="ui reply form">
+    <div class="field">
+      <textarea rows="2"></textarea>
+    </div>
+    <div class="ui blue labeled submit icon button">
+      <i class="icon edit"></i> Add Reply
+    </div>
+  </form>
+</div>}
+            
           </div>
         </div>
       </div>
