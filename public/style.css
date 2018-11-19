@@ -48,3 +48,11 @@ i.icon {
   flex: 1;
   margin-bottom: 4em;
 }
+
+#productTitle {
+  color: #1a69a4
+}
+
+#comments:hover {
+  cursor: pointer;
+}
