@@ -1,6 +1,7 @@
 import React from "react";
 import Product from "./Product";
-
+import { connect } from "react-redux";
+import { fetchItems } from "../actions/index";
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
@@ -42,12 +43,15 @@ class ProductList extends React.Component {
           submitterAvatarUrl: "images/avatars/Steve.png",
           productImageUrl: "images/products/image-yellow.png"
         }
-      ]
+      ],
+      redux: ""
     };
   }
 
   componentDidMount() {
     this.setState({ products: this.state.products });
+
+    this.setState({ redux: this.props.data });
   }
 
   handleProductUpVote = productId => {
@@ -124,4 +128,13 @@ class ProductList extends React.Component {
   }
 }
 
-export default ProductList;
+function mapStateToProps(state) {
+  return {
+    state: state
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  fetchItems
+)(ProductList);
