@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../actions";
+import { fetchItemsAction } from "../actions";
 import { get, set } from "../utils/localstorage";
 const uuidv1 = require("uuid/v1");
 
@@ -127,7 +127,15 @@ const mapStateToProps = ({ data }) => {
   };
 };
 
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchItems: () => {
+      dispatch(fetchItemsAction());
+    }
+  };
+}
+
 export default connect(
   mapStateToProps,
-  actions
+  mapDispatchToProps
 )(Product);
