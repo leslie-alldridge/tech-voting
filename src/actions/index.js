@@ -34,8 +34,14 @@ export function getReq() {
 }
 
 export function getGet(data) {
+  let arr = []
+  for (const key of Object.keys(data)) {
+    arr.push((data[key]));
+  }
+  console.log(arr);
+  
   return {
     type: FETCH_FEATURES,
-    payload: data
+    payload: arr
   };
 }
