@@ -1,4 +1,4 @@
-import { featuresRef, authRef, provider } from "./config/firebase";
+import { featuresRef } from "./config/firebase";
 import { FETCH_FEATURES } from "./types";
 
 // export const fetchItems = () => async dispatch => {
@@ -29,7 +29,7 @@ export function fetchItemsAction() {
 export function getReq() {
   return {
     type: FETCH_FEATURES,
-    payload: "loading"
+    payload: []
   };
 }
 

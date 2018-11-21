@@ -44,18 +44,21 @@ class ProductList extends React.Component {
           productImageUrl: "images/products/image-yellow.png"
         }
       ],
-      redux: this.props.state.data || null,
+      redux: [] || this.props.state,
       test: "test"
     };
   }
-  componentWillReceiveProps() {}
-
   componentDidMount() {
-    this.setState({ products: this.state.products });
-    console.log(this.props);
-
-    this.setState({ redux: this.props.state.data });
+    this.props.fetchItems();
+    console.log(this.props.state);
   }
+
+  // componentDidMount() {
+  //   this.setState({ products: this.state.products });
+  //   console.log(this.props);
+
+  //   this.setState({ redux: this.props.state.data });
+  // }
 
   handleProductUpVote = productId => {
     const nextProducts = this.state.products.map(product => {
@@ -90,6 +93,26 @@ class ProductList extends React.Component {
   };
 
   render() {
+    // const newList = Object.keys(this.props.state);
+    for (const key of Object.keys(this.props.state)) {
+      console.log(this.props.state[key]);
+      // return (
+      //   <Product
+      //     key={"product-" + this.props.state[key].id}
+      //     id={this.props.state[key].id}
+      //     title={this.props.state[key].title}
+      //     description={this.props.state[key].description}
+      //     url={this.props.state[key].url}
+      //     votes={this.props.state[key].votes}
+      //     submitterAvatarUrl={this.props.state[key].submitterAvatarUrl}
+      //     productImageUrl={this.props.state[key].productImageUrl}
+      //     onVote={this.handleProductUpVote}
+      //     onDownVote={this.handleProductDownVote}
+      //   />
+      // );
+    }
+    // console.log(newList);
+
     const productList = this.state.products.sort((a, b) => b.votes - a.votes);
 
     const productComponents = productList.map(product => (
@@ -133,7 +156,7 @@ class ProductList extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    state: state
+    state: state.data
   };
 }
 

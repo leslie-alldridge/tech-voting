@@ -9,6 +9,8 @@ class Product extends Component {
     comments: false
   };
 
+  componentDidMount() {}
+
   handleComments = () => {
     this.setState({
       comments: !this.state.comments
@@ -97,7 +99,7 @@ class Product extends Component {
                 <h3 class="ui dividing header">Comments</h3>
                 <div class="comment">
                   <a class="avatar">
-                    <img src={this.props.submitterAvatarUrl} />
+                    <img alt="" src={this.props.submitterAvatarUrl} />
                   </a>
                   <div class="content">
                     <h4 id="productTitle">Nicole</h4>
