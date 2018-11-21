@@ -6,46 +6,6 @@ class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [
-        {
-          id: 1,
-          title: "Stop SalesForce from freezing",
-          description: "Going above four open tabs results in page lockup.",
-          url: "#",
-          votes: 0,
-          submitterAvatarUrl: "images/avatars/Nicole.png",
-          productImageUrl: "images/products/image-aqua.png"
-        },
-        {
-          id: 2,
-          title: "Regional Slack Channels",
-          description: "Improve internal communications.",
-          url: "#",
-          votes: 0,
-          submitterAvatarUrl: "images/avatars/Lines.png",
-          productImageUrl: "images/products/image-rose.png"
-        },
-        {
-          id: 3,
-          title: "New wording for Status Page",
-          description: "Provide a #human experience for our users.",
-          url: "#",
-          votes: 0,
-          submitterAvatarUrl: "images/avatars/Vinh.png",
-          productImageUrl: "images/products/image-steel.png"
-        },
-        {
-          id: 4,
-          title: "SQL querying tool",
-          description: "Avoid waiting for JIRAs.",
-          url: "#",
-          votes: 0,
-          submitterAvatarUrl: "images/avatars/Steve.png",
-          productImageUrl: "images/products/image-yellow.png"
-        }
-      ],
-      redux: [] || this.props.state,
-      test: "test"
     };
   }
   componentDidMount() {
@@ -86,42 +46,22 @@ class ProductList extends React.Component {
   };
 
   render() {
-    // const newList = Object.keys(this.props.state);
-    for (const key of Object.keys(this.props.state)) {
-      console.log(this.props.state[key]);
-      // return (
-      //   <Product
-      //     key={"product-" + this.props.state[key].id}
-      //     id={this.props.state[key].id}
-      //     title={this.props.state[key].title}
-      //     description={this.props.state[key].description}
-      //     url={this.props.state[key].url}
-      //     votes={this.props.state[key].votes}
-      //     submitterAvatarUrl={this.props.state[key].submitterAvatarUrl}
-      //     productImageUrl={this.props.state[key].productImageUrl}
-      //     onVote={this.handleProductUpVote}
-      //     onDownVote={this.handleProductDownVote}
-      //   />
-      // );
-    }
-    // console.log(newList);
+    const productList = this.props.state.sort((a, b) => b.votes - a.votes);
 
-    const productList = this.state.products.sort((a, b) => b.votes - a.votes);
-
-    const productComponents = productList.map(product => (
+     const newList = productList.map(post => (
       <Product
-        key={"product-" + product.id}
-        id={product.id}
-        title={product.title}
-        description={product.description}
-        url={product.url}
-        votes={product.votes}
-        submitterAvatarUrl={product.submitterAvatarUrl}
-        productImageUrl={product.productImageUrl}
-        onVote={this.handleProductUpVote}
-        onDownVote={this.handleProductDownVote}
-      />
-    ));
+      key={"product-" + post.id}
+      id={post.id}
+      title={post.title}
+      description={post.description}
+      url={post.url}
+      votes={post.votes}
+      submitterAvatarUrl={post.submitterAvatarUrl}
+      productImageUrl={post.productImageUrl}
+      onVote={this.handleProductUpVote}
+      onDownVote={this.handleProductDownVote}
+    />
+     ))
     return (
       <div>
         <div id="buttons" className="ui two column centered grid">
@@ -141,7 +81,7 @@ class ProductList extends React.Component {
             </button>
           </div>
         </div>
-        <div className="ui unstackable items">{productComponents}</div>
+        <div className="ui unstackable items">{newList}</div>
       </div>
     );
   }
