@@ -20,7 +20,7 @@ Have an admin panel so the admin can easily delete / edit submissions
 
 Help page with instructions
 
-Read and write to database through add form and loading the improvements page IN PROGRESS (redux firebase connected)
+Read and write to database through add form and loading the improvements page IN PROGRESS (redux firebase connected and products on page are from DB)
 
 ## Feedback
 
