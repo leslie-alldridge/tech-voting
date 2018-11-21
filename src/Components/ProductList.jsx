@@ -53,13 +53,6 @@ class ProductList extends React.Component {
     console.log(this.props.state);
   }
 
-  // componentDidMount() {
-  //   this.setState({ products: this.state.products });
-  //   console.log(this.props);
-
-  //   this.setState({ redux: this.props.state.data });
-  // }
-
   handleProductUpVote = productId => {
     const nextProducts = this.state.products.map(product => {
       if (product.id === productId) {
