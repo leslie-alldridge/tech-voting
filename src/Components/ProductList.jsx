@@ -1,7 +1,7 @@
 import React from "react";
 import Product from "./Product";
 import { connect } from "react-redux";
-import { fetchItemsAction } from "../actions/index";
+import { fetchItemsAction, downVoteAction } from "../actions/index";
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
@@ -29,18 +29,14 @@ class ProductList extends React.Component {
   };
 
   handleProductDownVote = productId => {
-    const nextProducts = this.props.state.map(product => {
+    this.props.downVote(productId);
+
+    this.props.state.map(product => {
       if (product.id === productId) {
-        return Object.assign({}, product, {
-          votes: product.votes - 1
-        });
+        console.log("same id" + product.id);
       } else {
         return product;
       }
-    });
-
-    this.setState({
-      products: nextProducts
     });
   };
 
@@ -96,6 +92,9 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchItems: () => {
       dispatch(fetchItemsAction());
+    },
+    downVote: id => {
+      dispatch(downVoteAction(id));
     }
   };
 }

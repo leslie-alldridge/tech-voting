@@ -15,6 +15,15 @@ export function fetchItemsAction() {
   };
 }
 
+export function downVoteAction(id) {
+  return function(dispatch) {
+    dispatch(getReq());
+    featuresRef.on("value", snapshot => {
+      dispatch(getDown(snapshot.val(), id));
+    });
+  };
+}
+
 export function getReq() {
   return {
     type: FETCH_FEATURES,
@@ -27,6 +36,26 @@ export function getGet(data) {
   for (const key of Object.keys(data)) {
     arr.push(data[key]);
   }
+  return {
+    type: FETCH_FEATURES,
+    payload: arr
+  };
+}
+
+export function getDown(data, id) {
+  let arr = [];
+  for (const key of Object.keys(data)) {
+    if (data[key].id == id) {
+      if (data[key].votes > 0) {
+        data[key].votes -= 1;
+        arr.push(data[key]);
+        console.log("removed vote");
+      }
+    } else {
+      arr.push(data[key]);
+    }
+  }
+  console.log(arr);
   return {
     type: FETCH_FEATURES,
     payload: arr
