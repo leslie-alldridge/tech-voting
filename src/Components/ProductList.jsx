@@ -5,8 +5,7 @@ import { fetchItemsAction } from "../actions/index";
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
   componentDidMount() {
     this.props.fetchItems();
@@ -14,7 +13,7 @@ class ProductList extends React.Component {
   }
 
   handleProductUpVote = productId => {
-    const nextProducts = this.state.products.map(product => {
+    const nextProducts = this.props.state.map(product => {
       if (product.id === productId) {
         return Object.assign({}, product, {
           votes: product.votes + 1
@@ -30,7 +29,7 @@ class ProductList extends React.Component {
   };
 
   handleProductDownVote = productId => {
-    const nextProducts = this.state.products.map(product => {
+    const nextProducts = this.props.state.map(product => {
       if (product.id === productId) {
         return Object.assign({}, product, {
           votes: product.votes - 1
@@ -48,20 +47,20 @@ class ProductList extends React.Component {
   render() {
     const productList = this.props.state.sort((a, b) => b.votes - a.votes);
 
-     const newList = productList.map(post => (
+    const newList = productList.map(post => (
       <Product
-      key={"product-" + post.id}
-      id={post.id}
-      title={post.title}
-      description={post.description}
-      url={post.url}
-      votes={post.votes}
-      submitterAvatarUrl={post.submitterAvatarUrl}
-      productImageUrl={post.productImageUrl}
-      onVote={this.handleProductUpVote}
-      onDownVote={this.handleProductDownVote}
-    />
-     ))
+        key={"product-" + post.id}
+        id={post.id}
+        title={post.title}
+        description={post.description}
+        url={post.url}
+        votes={post.votes}
+        submitterAvatarUrl={post.submitterAvatarUrl}
+        productImageUrl={post.productImageUrl}
+        onVote={this.handleProductUpVote}
+        onDownVote={this.handleProductDownVote}
+      />
+    ));
     return (
       <div>
         <div id="buttons" className="ui two column centered grid">
