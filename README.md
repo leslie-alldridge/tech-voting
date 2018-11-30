@@ -26,3 +26,7 @@ Read and write to database through add form and loading the improvements page IN
 
 Ability to downvote DONE
 Ability to comment DONE (awaiting feedback)
+
+## Feedback received 
+
+Good starting place to explain an idea. Have collated feedback and started a new repo for version two as there's a few drastic changes we'll make. :) 
