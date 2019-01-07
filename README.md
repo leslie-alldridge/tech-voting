@@ -30,3 +30,5 @@ Ability to comment DONE (awaiting feedback)
 ## Feedback received 
 
 Good starting place to explain an idea. Have collated feedback and started a new repo for version two as there's a few drastic changes we'll make. :) 
+
+Replaced with https://github.com/leslie-alldridge/tech-voting-v2 as some feedback received and features requested was more suited for a fresh start. 
